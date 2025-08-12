@@ -1,0 +1,48 @@
+POST http://localhost:3000/reservations
+Content-Type: application/json
+
+{
+    "startDate": "08/10/2025",
+    "endDate": "08/20/2025",
+    "placeId": "145",
+    "invoiceId": "9883"
+}
+
+####
+GET http://localhost:3000/reservations
+Content-Type: application/json
+
+### PATCH
+PATCH http://localhost:3000/reservations/6899f69e37912f23c7b365c8
+Content-Type: application/json
+
+{
+    "startDate": "08/15/2025"
+}
+
+### DELETE
+DELETE http://localhost:3000/reservations/6899f69e37912f23c7b365c8
+Content-Type: application/json
+### GET ALL
+
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+"email": "test@example2.com",
+"password": "StrongPassword123!"
+}
+
+####
+GET http://localhost:3001/users
+
+
+### AUTH LOGIN POST
+
+POST http://localhost:3001/auth/login
+Content-Type: application/json
+
+{
+"email": "test@example2.com",
+"password": "StrongPassword123!"
+}
