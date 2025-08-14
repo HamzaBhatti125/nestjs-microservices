@@ -3,7 +3,10 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { UserRepository } from './user.repository';
 import { DatabaseModule } from '@app/common';
-import { UserDocument, UserSchema } from './models/user.schema';
+import {
+  UserDocument,
+  UserSchema,
+} from '../../../../libs/common/src/models/user.schema';
 
 @Module({
   imports: [
