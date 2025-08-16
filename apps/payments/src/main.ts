@@ -8,10 +8,11 @@ async function bootstrap() {
   const app = await NestFactory.create(PaymentsModule);
   const config = app.get(ConfigService);
   app.connectMicroservice({
-    transport: Transport.TCP,
+    transport: Transport.RMQ,
     options: {
-      host: '0.0.0.0',
-      port: config.get('PORT'),
+      urls: [config.getOrThrow('RABBITMQ_URI')],
+      queue: 'payments',
+      noAck: false, // Ensure messages are acknowledged
     },
   });
   app.useLogger(app.get(Logger));

@@ -58,5 +58,10 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - '5672:5672'
+
 volumes:
   mysql_data:

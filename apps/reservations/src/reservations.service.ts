@@ -15,6 +15,7 @@ export class ReservationsService {
   ) {}
   async create(createReservationDto: CreateReservationDto, user: User) {
     const { email, id: userId } = user;
+    console.log('Creating reservation for user:', userId, 'with email:', email);
     return this.paymentService
       .send('create_charge', {
         ...createReservationDto.charge,
