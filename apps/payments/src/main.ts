@@ -3,15 +3,18 @@ import { PaymentsModule } from './payments.module';
 import { ConfigService } from '@nestjs/config';
 import { Transport } from '@nestjs/microservices';
 import { Logger } from 'nestjs-pino';
+import { PAYMENTS_PACKAGE_NAME } from '@app/common';
+import { join } from 'path';
 
 async function bootstrap() {
   const app = await NestFactory.create(PaymentsModule);
   const config = app.get(ConfigService);
   app.connectMicroservice({
-    transport: Transport.TCP,
+    transport: Transport.GRPC,
     options: {
-      host: '0.0.0.0',
-      port: config.get('PORT'),
+      package: PAYMENTS_PACKAGE_NAME,
+      protoPath: join(__dirname, '../../../proto/payments.proto'),
+      url: `${config.get('PAYMENTS_GRPC_URL')}`,
     },
   });
   app.useLogger(app.get(Logger));
