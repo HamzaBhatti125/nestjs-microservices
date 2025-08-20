@@ -20,9 +20,14 @@
     "test:e2e": "jest --config ./apps/sleeper-new/test/jest-e2e.json"
   },
   "dependencies": {
+    "@apollo/gateway": "^2.11.2",
+    "@apollo/server": "^4",
+    "@apollo/subgraph": "^2.11.2",
+    "@nestjs/apollo": "^13.1.0",
     "@nestjs/common": "^11.1.6",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.6",
+    "@nestjs/graphql": "^13.1.0",
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^11.1.6",
@@ -34,6 +39,7 @@
     "class-validator": "^0.14.2",
     "cookie-parser": "^1.4.7",
     "express": "^5.1.0",
+    "graphql": "^16.11.0",
     "joi": "^18.0.0",
     "mongoose": "^8.17.1",
     "nestjs-pino": "^4.4.0",
@@ -48,7 +54,7 @@
     "stripe": "^18.4.0"
   },
   "devDependencies": {
-    "@nestjs/cli": "^10.0.0",
+    "@nestjs/cli": "^10.4.9",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^11.1.6",
     "@types/bcryptjs": "^3.0.0",

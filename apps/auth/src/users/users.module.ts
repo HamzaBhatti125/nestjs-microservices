@@ -7,6 +7,7 @@ import {
   UserDocument,
   UserSchema,
 } from '../../../../libs/common/src/models/user.schema';
+import { UsersResolver } from './users.resolver';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import {
     ]),
   ],
   controllers: [UsersController],
-  providers: [UsersService, UserRepository],
+  providers: [UsersService, UserRepository, UsersResolver],
   exports: [UsersService],
 })
 export class UsersModule {}

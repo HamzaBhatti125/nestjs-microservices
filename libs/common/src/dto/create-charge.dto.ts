@@ -1,30 +1,19 @@
-import { Type } from 'class-transformer';
-import {
-  IsDefined,
-  IsNotEmptyObject,
-  IsNumber,
-  IsOptional,
-  IsString,
-  ValidateNested,
-} from 'class-validator';
-import { CardDto } from './card.dto';
+import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { Field, InputType } from '@nestjs/graphql';
 
+@InputType()
 export class CreateChargeDto {
-  @IsDefined()
-  @IsNotEmptyObject()
-  @ValidateNested()
-  @Type(() => CardDto)
-  @IsOptional()
-  card?: CardDto;
-
   @IsString()
   @IsOptional()
+  @Field(() => String, { nullable: true })
   token?: string; // Stripe test token
 
   @IsNumber()
+  @Field(() => Number)
   amount: number;
 
   @IsString()
   @IsOptional()
+  @Field(() => String, { nullable: true })
   paymentMethodId?: string; // Optional, for future use
 }

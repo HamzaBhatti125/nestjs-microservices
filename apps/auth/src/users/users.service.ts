@@ -13,6 +13,7 @@ export class UsersService {
   constructor(private readonly userRepository: UserRepository) {}
 
   async create(createUserDto: CreateUserDto) {
+    console.log('this is user...', createUserDto);
     await this.validateCreateUserDto(createUserDto);
 
     const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
@@ -49,5 +50,9 @@ export class UsersService {
       console.error('Error finding user:', error.message);
       throw error;
     }
+  }
+
+  async findAll() {
+    return this.userRepository.find({});
   }
 }

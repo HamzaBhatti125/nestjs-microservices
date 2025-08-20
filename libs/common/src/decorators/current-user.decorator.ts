@@ -7,6 +7,12 @@ export const CurrentUser = createParamDecorator(
 );
 
 function getCurrentUserByContext(context: ExecutionContext): UserDocument {
-  const request = context.switchToHttp().getRequest();
-  return request.user;
+  if (context.getType() === 'http') {
+    const request = context.switchToHttp().getRequest();
+    return request.user;
+  }
+  const user = context.getArgs()[2]?.req.headers?.user;
+  if (user) {
+    return JSON.parse(user);
+  }
 }
